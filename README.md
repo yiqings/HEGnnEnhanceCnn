@@ -26,7 +26,11 @@ The assoicated graph data data is avaiable at https://zenodo.org/record/6683652#
 
 ### 3. Code organization
 
-This project is still under consturction. We keep updating the codes. A temporal version can be available at https://anonymous.4open.science/r/gnncnnfusion2243.
+- [`mm_model.py`](mm_model.py): model construction.
+- [`mm_trainer.py`](mm_trainer.py): the training codes.
+- [`mm_evaluater.py`](mm_evaluater.py): the evaluation codes for both patch and WSI levels.
+- [`mm_dataset.py`](mm_dataset.py): dataset loader.
+- [`main.py`](main.py): main functions.
 
 ---
 If you find our paper, code or graph data helpful in your research. Please consider citing our paper:
