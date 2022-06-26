@@ -24,7 +24,7 @@ The assoicated graph data data is avaiable at https://zenodo.org/record/6683652#
 - crc_msi_train: The cell-graph extracted from CRC_TRAIN_MSS and CRC_TRAIN_MSIMUT.
 - crc_msi_test: The cell-graph extracted from CRC_TEST_MSS and CRC_TEST_MSIMUT. 
 
-### 3. Code organization
+### 3. Code Organization
 
 - [`mm_model.py`](mm_model.py): model construction.
 - [`mm_trainer.py`](mm_trainer.py): the training codes.
