@@ -1,0 +1,72 @@
+data:
+  train:
+    graph_path: '/xinyexiong/MSI/graph_Data/graphs0426/train40/processed_feature'
+    img_path: '/shenyiqing/dataset/CRC_DX_MSI/train'
+  test:
+    graph_path: '/xinyexiong/MSI/graph_Data/graphs0426/test40/processed_feature'
+    img_path: 'shenyiqing/dataset/CRC_DX_MSI/test'
+  num_classes: 2
+  num_workers: 12
+  batch_size: 256
+############### 
+environment:
+  gpu_id: 2
+  seed: 95
+############### 
+optimization: 
+  learning_rate: 5.0e-4
+  min_learning_rate: 5.0e-6
+  weight_decay: 1.0e-5
+  gamma: 0.8
+  epochs: 100
+  patience: 8
+  scheduler: 'cosine' # epoential
+############### 
+output_path: 
+  base_path: '/home/wang1/shenyiqing/Results/MM_model/may23/ablation_feature_prop/'
+  exp_file: 'ablation_gcn_64'
+  exist_ok: True
+  tuning: False
+############### 
+models:
+  names:
+    - "gnn" 
+    - "timm"
+    - "fusion_mlp"
+  gnn:
+    # model_name: "gintopk2"
+    # model_name: "gcntopk4"
+    model_name: "gcntopk2"
+    hidden_features: 128
+    out_features: 64
+    pooling: 0.9
+    activation: "gelu"
+  timm:
+    # model_name: "mobilenetv3_large_100"
+    model_name: "resnet18"
+    # model_name: "densenet121"
+    # pretrained: False
+    pretrained: True
+  transformer_gnn:
+    model_name: 'gcn'
+    attn_heads: 16
+    dim_head: 128
+    emb_dropout: 0.1
+    vit_dropout: 0.1
+    hidden_features: 256
+    gnn_pooling: 0.5
+    gnn_activation: "gelu"
+  resnet_gnn:
+    test: 64
+  fusion_mlp:
+    hidden_features:
+      - 128
+      # - 256
+    # adapt_in_features: "min"
+    adapt_in_features: 
+    activation: "leaky_relu"
+    dropout_prob: 0.1
+    normalization: "layer_norm"
+  fusion_transformer:
+    hidden_features: 128
+    adapt_in_features: "min"

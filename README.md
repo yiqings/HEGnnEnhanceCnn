@@ -31,7 +31,21 @@ The assoicated graph data data is avaiable at https://zenodo.org/record/6683652#
 - [`mm_evaluater.py`](mm_evaluater.py): the evaluation codes for both patch and WSI levels.
 - [`mm_dataset.py`](mm_dataset.py): dataset loader.
 - [`main.py`](main.py): main functions.
+- [`config/config_crc.yaml`](config/config_crc.yaml): An example of configuration file for CRC dataset. Please place the path `graph_path`, `img_path` with your local path to the dataset.
+- [`config/config_stad.yaml`](config/config_std.yaml): An example of configuration file for STAD dataset.
 
+To run the training script [`main.py`](main.py):
+```bash
+python main.py config/config_crc.yaml
+```
+
+To run the evaluation script [`mm_evaluater.py`](mm_evaluater.py):
+```bash
+python /mm_evaluater.py \
+--gpu_id 0 \
+--path PATH_TO_THE_OUTPUT \
+--choice acc \
+```
 ---
 If you find our paper, code or graph data helpful in your research. Please consider citing our paper:
 ```

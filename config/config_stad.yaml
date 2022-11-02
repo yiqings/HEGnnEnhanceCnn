@@ -1,0 +1,75 @@
+data:
+  train:
+    graph_path: '/xinyexiong/MSI/graph_Data/graphs0430STAD/train40/processed_feature'
+    img_path: '/shenyiqing/dataset/STAD_MSI/train'
+  test:
+    graph_path: '/xinyexiong/MSI/graph_Data/graphs0430STAD/test40/processed_feature'
+    img_path: '/shenyiqing/dataset/STAD_MSI/test'
+  num_classes: 2
+  num_workers: 12
+  batch_size: 512
+############### 
+environment:
+  gpu_id: 0
+  seed: 95
+############### 
+optimization: 
+  learning_rate: 5.0e-4
+  min_learning_rate: 5.0e-6
+  weight_decay: 1.0e-5
+  gamma: 0.8
+  epochs: 100
+  patience: 10
+  scheduler: 'cosine' # epoential
+############### 
+output_path: 
+  base_path: '/shenyiqing/Results/MM_model/may05/'
+  exp_file: 'test'
+  # exist_ok: False # false to prevent the overwriting.
+  exist_ok: True
+  tuning: True
+############### 
+models:
+  names:
+    # - "transformer_gnn"
+    # - "resnet_gnn"
+    - "gnn"
+    - "timm"
+    - "fusion_mlp"
+    # - "fusion_transformer"
+  gnn:
+    model_name: "gcntopk2"
+    # model_name: "gcntopk4"
+    # model_name: "gintopk2"
+    hidden_features: 128
+    out_features: 16
+    pooling: 0.9
+    activation: "gelu"
+  timm:
+    model_name: "resnet18"
+    # pretrained: False
+    pretrained: True
+  transformer_gnn:
+    model_name: 'gcn'
+    attn_heads: 8
+    dim_head: 64
+    emb_dropout: 0.1
+    vit_dropout: 0.1
+    hidden_features: 256
+    gnn_pooling: 0.5
+    gnn_activation: "gelu"
+  resnet_gnn:
+    test: 64
+  fusion_mlp:
+    hidden_features:
+      - 128
+      # - 256
+      # - 128
+    # adapt_in_features: "min"
+    adapt_in_features: 
+    activation: "leaky_relu"
+    dropout_prob: 0.1
+    normalization: "layer_norm"
+  fusion_transformer:
+    hidden_features: 128
+    adapt_in_features: "min"
