@@ -23,7 +23,7 @@ optimization:
   scheduler: 'cosine' # epoential
 ############### 
 output_path: 
-  base_path: '/home/wang1/shenyiqing/Results/MM_model/may23/ablation_feature_prop/'
+  base_path: 'shenyiqing/Results/MM_model/may23/ablation_feature_prop/'
   exp_file: 'ablation_gcn_64'
   exist_ok: True
   tuning: False
