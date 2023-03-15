@@ -12,8 +12,8 @@ from .resnet import(
 )
 
 from .mlp import MLP 
-from .trans_gnn import GCNViT
-from .resnet_gnn import GCNResNet
+# from .trans_gnn import GCNViT
+# from .resnet_gnn import GCNResNet
 
 gnn_model_dict = {
     'gintopk4' : GINTopK4,
@@ -28,7 +28,7 @@ cnn_model_dict = {
     'wide_resnet20_8': wide_resnet20_8,
 }
 
-fusion_dict = {
-    'gcn':GCNViT,
-}
+# fusion_dict = {
+#     'gcn':GCNViT,
+# }
 
